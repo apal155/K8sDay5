@@ -1,0 +1,17 @@
+quota2.yml
+---------
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: pod-demo
+spec:
+  hard:
+    pods: "2"
+
+kubectl create -f quota2.yml
+kubectl get quota
+kubectl get resourcequota pod-demo --output=yaml
+kubectl run nginx-mp --image=nginx --port=80 --replicas=3
+kubectl get deployment 
+kubectl get deployment pod-quota-demo --output=yaml
+
